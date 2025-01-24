@@ -263,13 +263,259 @@ for column in outlier_columns:
 |---|---|
 |![fig12](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig12%20-%20mean%20std.png)|![fig23](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig13%20-%20standardized%20table.png)|
 
-![standardized plot](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig14%20-%20standardized%20plot.png)
-
 **Normalization**
 
+- Rescales data so that it exists in a range between 0 and 1
+
+  ![normalization equation](https://latex.codecogs.com/svg.image?&space;x_{normalized}=\frac{(x-minimum(x))}{maximum(x)-minimum(x)})
+
+|Pre-transformation|Post-transformation|
+|---|---|
+|![fig16](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig15%20-%20min%20max.png)|![fig17](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig16%20-%20normalized%20table.png)|
+
+![plot](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig17%20-%20normalized%20plot.png)
+
+- In most scenarios, it DOES NOT matter which method of feature scaling you use
+- Again, it depends on context
+  - If you need your values to remain positive  use normalization
+    - i.e. image data with pixel intensities, one-hot encoding
+  - For linear/logistic regression, or if you want to preserve the intensity of any outliers in data  use standardization
+- If you’re not sure, experiment with both, validate model performance, then determine which is best
+- Feature scaling is not always required
+  - It is RECOMMENDED for linear/logistic regression
+    - This recommendation is based on speed at which model can find a solution rather than accuracy of the results
+  - This recommendation does not extend to decision trees or random forests
+    - They process all variables independently anyway
+  - It is REQUIRED for algorithms that rely on distance-based comparisons
+    - Such as k-means or k-nearest-neighbors
+- Using feature scaling can come down to a trade-off between accuracy and interpretation
+  - If you scale your variables it makes it harder to understand the true meanings of the coefficients in terms of their actual values
+
+### Feature Scaling Hands-On
+
+- Refer to [feature_scaling.py](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/scripts_and_data/feature_scaling.py)
+
+```python
+import pandas as pd
+
+my_df = pd.DataFrame({"Height" : [1.98, 1.77, 1.76, 1.80, 1.64],
+                      "Weight" : [99, 81, 70, 86, 82]})
+
+# Standardization
+from sklearn.preprocessing import StandardScaler
+
+scale_standard = StandardScaler()
+scale_standard.fit_transform(my_df)
+my_df_standardized = pd.DataFrame(scale_standard.fit_transform(my_df), columns = my_df.columns)
 
 
+# Normalization
+from sklearn.preprocessing import MinMaxScaler
+
+scale_norm = MinMaxScaler()
+scale_norm.fit_transform(my_df)
+my_df_normalized = pd.DataFrame(scale_norm.fit_transform(my_df), columns = my_df.columns)
+```
+
+## Feature Selection
+
+### Theory - Feature Selection
+
+- **Feature Selection** is the process used to select the **input variables** that are **most important** to your Machine Learning task
+- Why use feature scaling?
+  - Improved model accuracy
+  - Lower computational cost
+  - Easier to understand & explain
+- You can use a correlation matrix to see the relationship between the variables
+
+![corr matrix](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig18%20-%20corr%20matrix.png)
+
+![corr matrix interpretation](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig19%20-%20corr%20matrix%20interpretation.png)
+
+- Stronger correlations (in our example between output and the 3 inputs) would suggest that they be put in the model
+- **Univariate Feature Selection** – applying **statistical tests** to find relationships between the output variable, and each input variable in **isolation**
+
+![reg vs class](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig20%20-%20regression%20vs%20classification.png)
+
+- **Recursive Feature Elimination (RFE)** – Fits a model that starts with all input variables, then iteratively removes those with the weakest relationship with the output until the desired number of features is reached
+- High-level process based on our example:
+
+![rfe step 1](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig21%20-%20rfe%20step%201.png)
+
+![rfe step 2](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig22%20-%20rfe%20step%202.png)
+
+![rfe step 3](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig23%20-%20rfe%20step%203.png)
+
+![rfe step 4](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig24%20-%20rfe%20step%204.png)
+
+- Go back to step 3 – this time drop Input A  then stop (we only wanted 2 input variables)
+- The problem with this method
+  - We might have no idea what “the desired number of features” should be
+  - To address this – we can use cross validation (will be explored later)
+
+### Practical Correlation Matrix
+
+- Refer to [practical_correlation_matrix.py](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/scripts_and_data/practical_correlation_matrix.py)
+
+```python
+import pandas as pd
+
+my_df = pd.read_csv('feature_selection_data.csv')
+
+correlation_matrix = my_df.corr()
+```
+
+### Practical Univariate Testing
+
+- Refer to [practical_univariate_testing.py](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/scripts_and_data/practical_univariate_testing.py)
+
+```python
+import pandas as pd
+
+my_df = pd.read_csv('feature_selection_data.csv')
+
+# Regression Template
+from sklearn.feature_selection import SelectKBest, f_regression
+
+X = my_df.drop(['output'], axis = 1)
+y = my_df['output']
+
+feature_selector = SelectKBest(f_regression, k = "all")
+fit = feature_selector.fit(X, y)
+
+p_values = pd.DataFrame(fit.pvalues_)
+scores = pd.DataFrame(fit.scores_)
+input_variable_names = pd.DataFrame(X.columns)
+summary_stats = pd.concat([input_variable_names, p_values, scores], axis = 1)
+summary_stats.columns = ["input_variable", "p_values", "f_score"]
+summary_stats.sort_values(by = "p_value", inplace = True)
+
+p_value_threshold = 0.05
+score_threshold = 5
+
+selected_variables = summary_stats.loc[(summary_stats['f_score'] >= score_threshold) & (summary_stats['p_value'] <= p_value_threshold)]
+selected_variables = selected_variables['input_variable'].tolist()
+X_new = X[selected_variables]
 
 
+# Classification Template
+from sklearn.feature_selection import SelectKBest, chi2
+
+X = my_df.drop(['output'], axis = 1)
+y = my_df['output']
+
+feature_selector = SelectKBest(chi2, k = "all")
+fit = feature_selector.fit(X, y)
+
+p_values = pd.DataFrame(fit.pvalues_)
+scores = pd.DataFrame(fit.scores_)
+input_variable_names = pd.DataFrame(X.columns)
+summary_stats = pd.concat([input_variable_names, p_values, scores], axis = 1)
+summary_stats.columns = ["input_variable", "p_values", "chi2_score"]
+summary_stats.sort_values(by = "p_value", inplace = True)
+
+p_value_threshold = 0.05
+score_threshold = 5
+
+selected_variables = summary_stats.loc[(summary_stats['chi2_score'] >= score_threshold) & (summary_stats['p_value'] <= p_value_threshold)]
+selected_variables = selected_variables['input_variable'].tolist()
+X_new = X[selected_variables]
+```
+
+### Practical Recursive Feature Elimination with Cross Validation
+
+- Refer to [practical_RFECV.py](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/scripts_and_data/practical_RFECV.py)
+
+```python
+import pandas as pd
+my_df = pd.read_csv('feature_selection_data.csv')
+
+from sklearn.feature_selection import RFECV
+from sklearn.linear_model import LinearRegression
+
+X = my_df.drop(['output'], axis = 1)
+y = my_df['output']
+
+regressor = LinearRegression()
+feature_selector = RFECV(regressor)
+
+fit = feature_selector.fit(X, y)
+
+optimal_feature_count = feature_selector.n_features_
+print(f"Optimal number of features: {optimal_feature_count}")
+
+X_new = X.loc[:, feature_selector.get_support()]
+
+import matplotlib.pyplot as plt
+
+plt.plot(range(1, len(fit.grid_scores_) + 1), fit.grid_scores_, marker = "o")
+plt.ylabel("Model Score")
+plt.xlabel("Number of Features")
+plt.title(f"Feature Selection using RFE \n Optimal number of features is {optimal_feature_count} (at score of {round(max(fit.grid_scores_), 4)})")
+plt.tight_layout()
+plt.show()
+```
+
+## ML Model Validation
+
+### Theory Model Validation
+
+- Machine learning model workflow:
+
+![ml model workflow](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig25%20-%20ml%20model%20workflow.png)
+
+- **Overfitting** is where a model learns the patterns within the training data **too well** – resulting in poor performance on new data
+- To prevent this we can use (k-fold) Cross Validation
+
+![kfold cv](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig26%20-%20kfold%20cv.png)
+
+![all folds](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/img/fig27%20-%20all%20folds.png)
+
+### Practical Model Validation
+
+- Refer to [practical_model_validation.py](https://github.com/ndomah/1.-The-Basics/blob/main/4.%20Data%20Preparation%20%26%20Cleaning%20for%20Machine%20Learning/scripts_and_data/practical_model_validation.py)
+
+```python
+import pandas as pd
+my_df = pd.read_csv('feature_selection_data.csv')
+
+# Train/Test Split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score
+from sklearn.model_selection import train_test_split
+
+X = my_df.drop(['output'], axis = 1)
+y = my_df['output']
 
 
+# Regression Model
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
+
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+y_pred = regressor.predict(X_test)
+r2_score(y_test, y_pred)
+
+
+# Classification Model
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42, stratify = y)
+
+
+# Cross Validation
+from sklearn.model_selection import cross_val_score, KFold, StratifiedKFold
+
+cv_scores = cross_val_score(regressor, X, y, cv = 4, scoring = "r2")
+cv_scores.mean()
+
+
+# Regression
+cv = KFold(n_splits = 4, shuffle = True, random_state = 42)
+cv_scores = cross_val_score(regressor, X, y, cv = cv, scoring = "r2")
+cv_scores.mean()
+
+
+# Classification
+cv = StratifiedKFold(n_splits = 4, shuffle = True, random_state = 42)
+cv_scores = cross_val_score(clf, X, y, cv = cv, scoring = "accuracy")
+cv_scores.mean()
+```
