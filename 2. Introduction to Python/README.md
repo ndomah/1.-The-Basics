@@ -24,6 +24,10 @@ Programming involves writing instructions to solve problems and make computers u
 - Games
 - Satellites
 
+### Natural vs Programming Languages
+- Natural languages (e.g., English) are used for human communication.
+- Programming languages (e.g., Python) are used to instruct computers.
+
 ## Why Python?
 
 Python is a popular choice for programming due to its:
@@ -129,6 +133,24 @@ type of y : <class 'bool'>, id of y : 9478112
 type of s : <class 'str'>,  id of s : 140661482079792
 ```
 
+### Indexing and Slicing
+Reference: `indexing_and_slicing.py`
+
+```python
+careers = ['ml', 'de', 'ds', 'ui', 'api']
+print(careers[0])
+print(careers[-1])
+print(careers[:3])
+print(careers[-3:])
+```
+**Output:**
+```
+ml
+api
+['ml', 'de', 'ds']
+['ds', 'ui', 'api']
+```
+
 ### Loops
 Reference: `loops.py`
 
@@ -146,6 +168,43 @@ o
 n
 ```
 
+### Functions
+Reference: `functions.py`
+
+```python
+def sum_two(a, b=0):
+    return a + b
+
+def sum_three(a, b, c):
+    return a + b + c
+
+print(sum_two(1))
+print(sum_three(1, 2, 3))
+```
+**Output:**
+```
+2 Sum : 1
+3 Sum : 6
+```
+
+### Reading/Writing JSON and CSV
+Reference: `reading_json.py` and `csv_read.py`
+
+```python
+import json
+import csv
+
+data = json.loads('{"name": "Jack", "age": 29}')
+with open('emp_file.csv', mode='w') as employee_file:
+    employee_writer = csv.writer(employee_file)
+    employee_writer.writerow(['Name', 'Department'])
+```
+**Output:**
+```
+File exists : True
+Processed 2 lines.
+```
+
 ## Running Python Code
 
 You can start a Python console within the terminal to perform direct coding and test scripts interactively.
@@ -155,3 +214,9 @@ To execute a Python script, use the command:
 ```bash
 python filename.py
 ```
+
+## Additional Resources
+
+- [Official Python Documentation](https://docs.python.org/3/)
+- [Python Tutorial by W3Schools](https://www.w3schools.com/python/)
+- [Python for Beginners - Microsoft](https://learn.microsoft.com/en-us/training/paths/python-for-beginners/)
