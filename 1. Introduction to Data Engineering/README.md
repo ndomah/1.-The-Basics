@@ -4,9 +4,9 @@ Data Engineering is a crucial component of modern data-driven organizations, ens
 
 ## Data Science Careers
 
-
-
 Various roles exist within the data science field, each with distinct responsibilities:
+
+![careers](https://github.com/ndomah/1.-The-Basics/blob/main/1.%20Introduction%20to%20Data%20Engineering/img/careers.png)
 
 ### Research Scientist
 - Focuses on discovering new solutions to problems not yet in production.
@@ -43,10 +43,6 @@ Various roles exist within the data science field, each with distinct responsibi
 - Perform tasks across all roles, though this approach can lead to inefficiencies.
 - Generally found in startups where roles are blended.
 
-**Refer to Figure 1: Overview of Data Science Careers**
-
----
-
 # The Role of a Data Engineer
 
 ### Who are Data Engineers?
@@ -61,23 +57,17 @@ Various roles exist within the data science field, each with distinct responsibi
 - Ensuring data integrity and compliance with industry standards.
 - Optimizing performance of data processing workflows.
 
-**Refer to Figure 2: Key Responsibilities of a Data Engineer**
-
 ### Skills and Tools
 - Expertise in SQL, Python, and distributed computing.
 - Knowledge of cloud platforms (AWS, Azure, GCP).
 - Familiarity with orchestration tools such as Apache Airflow.
 - Understanding of database management and ETL processes.
 
-**Refer to Figure 3: Essential Skills for Data Engineers**
-
----
-
 # Data Engineering Platforms & Tools
 
 Platforms are the foundation of data engineering, enabling data ingestion, storage, analysis, and visualization.
 
-**Refer to Figure 4: Data Engineering Platforms Overview**
+![Data Science Platform Blueprint](https://github.com/ndomah/1.-The-Basics/blob/main/1.%20Introduction%20to%20Data%20Engineering/img/fig1.png)
 
 ### Engineering Tools in the Blueprint
 - Data Ingestion: Apache Kafka, AWS Kinesis
@@ -85,46 +75,34 @@ Platforms are the foundation of data engineering, enabling data ingestion, stora
 - Processing: Spark, Flink, Databricks
 - Visualization: Tableau, Power BI
 
-**Refer to Figure 5: Engineering Tools Blueprint**
-
----
+![Enhanced Data Science Platform Blueprint](https://github.com/ndomah/1.-The-Basics/blob/main/1.%20Introduction%20to%20Data%20Engineering/img/fig2.png)
 
 # Machine Learning for Engineers
 
 Data Engineers play a crucial role in machine learning workflows by ensuring data availability and infrastructure readiness.
 
-**Refer to Figure 6: Data Engineers and Machine Learning Workflow**
+![General Machine Learning Process](https://github.com/ndomah/1.-The-Basics/blob/main/1.%20Introduction%20to%20Data%20Engineering/img/fig3.png)
+
+![Machine Learning Process](https://github.com/ndomah/1.-The-Basics/blob/main/1.%20Introduction%20to%20Data%20Engineering/img/fig4.png)
 
 ### Machine Learning as a Small Part of Data Science
 
 Machine learning is only one aspect of the broader data science field. A significant amount of effort goes into data collection, cleaning, and feature engineering before models are applied.
 
-**Refer to Figure 7: ML as a Small Part of Data Science**
-
----
+![Technical Debt in Machine Learning](https://github.com/ndomah/1.-The-Basics/blob/main/1.%20Introduction%20to%20Data%20Engineering/img/fig5.png)
 
 # Data Science Project Lifecycle
 
 Understanding the phases of a data science project helps align engineering efforts with business goals.
 
-**Refer to Figure 8: Phases of Data Science Projects**
+![Business to Execution Flow](https://github.com/ndomah/1.-The-Basics/blob/main/1.%20Introduction%20to%20Data%20Engineering/img/fig6.png)
 
 ### Jobs within DS Project Phases
 
 Roles evolve throughout different phases of a project lifecycle, from data collection to deployment.
 
-**Refer to Figure 9: Jobs Within DS Project Phases**
-
----
+![Project Phase Roles](https://github.com/ndomah/1.-The-Basics/blob/main/1.%20Introduction%20to%20Data%20Engineering/img/fig7.png)
 
 # Conclusion
 
 Data Engineering is a vital function that supports data-driven decision-making and machine learning initiatives by ensuring robust data pipelines and infrastructure.
-
----
-
-# Additional Resources
-- [Data Engineering on AWS](https://aws.amazon.com/data-engineering/)
-- [GCP Data Engineering Guide](https://cloud.google.com/learn/data-engineering)
-- [Azure Data Engineering Solutions](https://learn.microsoft.com/en-us/azure/data-engineering/)
-
