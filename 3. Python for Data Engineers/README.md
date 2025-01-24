@@ -10,7 +10,7 @@ Python allows creating classes with attributes and functions and using modules t
 - Create a class definition with attributes and functions.
 - Instantiate the class and call its methods.
 
-Refer to `my_classes.py` for implementation.
+Refer to [`my_classes.py`](https://github.com/ndomah/1.-The-Basics/blob/main/3.%20Python%20for%20Data%20Engineers/scripts/my_classes.py) for implementation.
 
 ```python
 from my_classes import MyAge
@@ -27,7 +27,7 @@ Mr James, you are so young, only 42 years old!
 - Import custom class modules.
 - Instantiate and call functions from the imported modules.
 
-Refer to `modules.py` for details.
+Refer to [`modules.py`](https://github.com/ndomah/1.-The-Basics/blob/main/3.%20Python%20for%20Data%20Engineers/scripts/modules.py) for details.
 
 ```python
 from my_classes import MyAge
@@ -44,7 +44,7 @@ Mr James, you are so young, only 42 years old!
 
 Exception handling in Python helps catch and raise errors effectively.
 
-Refer to `exception_handling.py` for implementation details.
+Refer to [`exception_handling.py`](https://github.com/ndomah/1.-The-Basics/blob/main/3.%20Python%20for%20Data%20Engineers/scripts/exception_handling.py) for implementation details.
 
 ```python
 try:
@@ -61,7 +61,7 @@ except FileNotFoundError as error:
 
 Logging is used to track events that happen while running a program.
 
-Refer to `my_logging.py` and check `reading_csvs.log` for practical usage.
+Refer to [`my_logging.py`] and check `reading_csvs.log` for practical usage.
 
 ```python
 import logging
@@ -79,7 +79,7 @@ logging.info("10 is positive?")
 
 Datetime operations include:
 
-Refer to `my_datetime.py` for implementation.
+Refer to [`my_datetime.py`](https://github.com/ndomah/1.-The-Basics/blob/main/3.%20Python%20for%20Data%20Engineers/scripts/my_datetime.py) for implementation.
 
 ```python
 from datetime import datetime
@@ -96,7 +96,7 @@ print(now)
 
 JSON is widely used in logging and APIs for data exchange.
 
-Refer to `my_json.py` for examples.
+Refer to [`my_json.py`](https://github.com/ndomah/1.-The-Basics/blob/main/3.%20Python%20for%20Data%20Engineers/scripts/my_json.py) for examples.
 
 ```python
 import json
@@ -113,7 +113,7 @@ print(data[0])
 
 Ensuring JSON data is in the correct structure.
 
-Refer to `json_validation.py` and `test_json_validation.py` for implementation.
+Refer to [`json_validation.py`](https://github.com/ndomah/1.-The-Basics/blob/main/3.%20Python%20for%20Data%20Engineers/scripts/json_validation.py) and [`test_json_validation.py`](https://github.com/ndomah/1.-The-Basics/blob/main/3.%20Python%20for%20Data%20Engineers/scripts/test_json_validation.py) for implementation.
 
 ```python
 pytest
@@ -125,7 +125,7 @@ pytest
 
 ### Requests (APIs)
 
-Refer to `my_requests.py` for implementation.
+Refer to [`my_requests.py`](https://github.com/ndomah/1.-The-Basics/blob/main/3.%20Python%20for%20Data%20Engineers/scripts/my_requests.py) for implementation.
 
 ```python
 import requests
@@ -141,7 +141,7 @@ print(response.status_code)
 
 Python libraries such as Pandas and NumPy are essential for data manipulation.
 
-Refer to `my_pandas.py` and `my_numpy.py` for implementation details.
+Refer to [`my_pandas.py`](https://github.com/ndomah/1.-The-Basics/blob/main/3.%20Python%20for%20Data%20Engineers/scripts/my_pandas.py) and [`my_numpy.py`](https://github.com/ndomah/1.-The-Basics/blob/main/3.%20Python%20for%20Data%20Engineers/scripts/my_numpy.py) for implementation details.
 
 ```python
 import pandas as pd
@@ -159,7 +159,7 @@ print(np.mean(data['Quantity'].to_numpy()))
 
 Using PostgreSQL with Python:
 
-Refer to `my_psycopg2.py` for database integration.
+Refer to [`my_psycopg2.py`](https://github.com/ndomah/1.-The-Basics/blob/main/3.%20Python%20for%20Data%20Engineers/scripts/my_psycopg2.py) for database integration.
 
 ```python
 import psycopg2
