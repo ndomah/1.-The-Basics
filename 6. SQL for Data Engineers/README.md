@@ -22,11 +22,9 @@ A **database** is a collection of stored data typically organized in tables, row
 
 A **database management system (DBMS)** is software that provides an interface for managing databases and interacting with stored data.
 
-**Refer to Figure 2: The Chinook Database**
+![Chinook Database Schema](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/img/fig2.png)
 
-![Chinook Database Schema](fig2.png)
-
-Refer to `Chinook_Sqlite.sql` for the database setup.
+Refer to [`Chinook_Sqlite.sql`](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/scripts/Chinook_Sqlite.sql) for the database setup.
 
 ```sql
 -- Example from Chinook database
@@ -39,9 +37,7 @@ SELECT * FROM Artist WHERE ArtistId = 1;
 
 SQLite is a lightweight, serverless, self-contained database engine widely used in embedded systems and local applications.
 
-**Refer to Figure 3: SQLite Overview**
-
-![SQLite Overview](fig3.png)
+![SQLite Overview](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/img/fig3.png)
 
 #### Key Features of SQLite
 
@@ -50,10 +46,6 @@ SQLite is a lightweight, serverless, self-contained database engine widely used 
 - Zero configuration
 - Cross-platform
 - Compact size
-
-**Refer to Figure 4: Key Features of SQLite**
-
-![SQLite Key Features](fig4.png)
 
 ## Data Types in SQLite
 
@@ -65,29 +57,23 @@ SQLite provides the following storage classes:
 - `TEXT`: Stores text strings
 - `BLOB`: Stores binary data
 
-**Refer to Figure 5: SQLite Data Types**
-
-![SQLite Data Types](fig5.png)
+![SQLite Data Types](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/img/fig4.png)
 
 ### Data Type Comparison Across DBMS
 
-**Refer to Figure 6: Data Type Comparison**
-
-![Data Type Comparison](fig6.png)
+![Data Type Comparison](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/img/fig5.png)
 
 ## Basic SQL Concepts
 
 ### SQL Commands Overview
 
-**Refer to Figure 1: SQL Commands Overview**
-
-![SQL Commands Overview](fig1.jpg)
+![SQL Commands Overview](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/img/fig1.jpg)
 
 ### Data Definition Language (DDL)
 
 DDL commands define the structure of a database. Examples include:
 
-Refer to `DDL & DML.sql` for more details.
+Refer to [`DDL & DML.sql`](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/scripts/DDL%20%26%20DML.sql) for more details.
 
 ```sql
 CREATE TABLE Customers (
@@ -97,9 +83,7 @@ CREATE TABLE Customers (
 );
 ```
 
-**Refer to Figure 7: DDL & DML Commands**
-
-![DDL & DML](fig7.png)
+![DDL & DML](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/img/fig6.png)
 
 ### Data Manipulation Language (DML)
 
@@ -119,13 +103,11 @@ WHERE CustomerId = 1;
 
 ## SQL Query Execution Order
 
-**Refer to Figure 8: Query Execution Order**
-
-![Query Execution Order](fig8.png)
+![Query Execution Order](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/img/fig7.png)
 
 ## Grouping and Aggregation
 
-Refer to `SELECT & Aggregation.sql` for aggregation queries.
+Refer to [`SELECT & Aggregation.sql`](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/scripts/SELECT%20%26%20Aggregation.sql) for aggregation queries.
 
 ```sql
 SELECT Country, COUNT(*) AS TotalCustomers
@@ -133,9 +115,7 @@ FROM Customers
 GROUP BY Country;
 ```
 
-**Refer to Figure 9: Aggregation Functions**
-
-![Aggregation Functions](fig9.png)
+![Aggregation Functions](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/img/fig8.png)
 
 ### Joins
 
@@ -148,9 +128,7 @@ Types of joins:
 - `RIGHT JOIN`: Returns all records from the right table, and matched records from the left
 - `FULL OUTER JOIN`: Returns all records when there is a match in either table
 
-**Refer to Figure 10: Joins**
-
-![SQL Joins](fig10.png)
+![SQL Joins](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/img/fig9.png)
 
 ## Advanced SQL Concepts
 
@@ -162,17 +140,13 @@ TCL manages transactions within databases and ensures data integrity through com
 - `ROLLBACK`: Reverts changes to the last committed state
 - `SAVEPOINT`: Sets intermediate save points
 
-**Refer to Figure 11: ACID vs BASE**
-
-![ACID vs BASE](fig11.png)
+![ACID vs BASE](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/img/fig10.png)
 
 ### Common Table Expressions (CTE) and Subqueries
 
 CTEs simplify complex queries and improve readability by defining temporary result sets.
 
-**Refer to Figure 12: CTE vs Subquery**
-
-![CTE vs Subquery](fig12.png)
+![CTE vs Subquery](https://github.com/ndomah/1.-The-Basics/blob/main/6.%20SQL%20for%20Data%20Engineers/img/fig11.png)
 
 ```sql
 WITH top_customers AS (
