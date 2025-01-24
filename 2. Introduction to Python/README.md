@@ -60,7 +60,7 @@ Popular Python IDEs include:
 
 ## Python File Structure
 
-Python files have the `.py` extension. The entry point for execution in a Python file is found in `main.py`:
+Python files have the `.py` extension. The entry point for execution in a Python file is found in [`main.py`](https://github.com/ndomah/1.-The-Basics/blob/main/2.%20Introduction%20to%20Python/files/main.py):
 
 ```python
 if __name__ ==  "__main__":
@@ -74,7 +74,7 @@ Welcome to Python
 ## Core Python Concepts
 
 ### Math Expressions
-Reference: `math_exp.py`
+Reference: [`math_exp.py`](https://github.com/ndomah/1.-The-Basics/blob/main/2.%20Introduction%20to%20Python/files/math_exp.py)
 
 ```python
 x = 40
@@ -99,7 +99,7 @@ power: 1073741824000000000000000
 ```
 
 ### Strings
-Reference: `strings.py` and `strings_demo.py`
+Reference: [`strings.py`](https://github.com/ndomah/1.-The-Basics/blob/main/2.%20Introduction%20to%20Python/files/strings.py) and [`strings_demo.py`](https://github.com/ndomah/1.-The-Basics/blob/main/2.%20Introduction%20to%20Python/files/strings_demo.py)
 
 ```python
 print('Hello' + ' ' + 'World')
@@ -117,7 +117,7 @@ h
 ```
 
 ### Variables
-Reference: `variables.py`
+Reference: [`variables.py`](https://github.com/ndomah/1.-The-Basics/blob/main/2.%20Introduction%20to%20Python/files/variables.py)
 
 ```python
 x = 1
@@ -134,7 +134,7 @@ type of s : <class 'str'>,  id of s : 140661482079792
 ```
 
 ### Indexing and Slicing
-Reference: `indexing_and_slicing.py`
+Reference: [`indexing_and_slicing.py`](https://github.com/ndomah/1.-The-Basics/blob/main/2.%20Introduction%20to%20Python/files/indexing_and_slicing.py)
 
 ```python
 careers = ['ml', 'de', 'ds', 'ui', 'api']
@@ -152,7 +152,7 @@ api
 ```
 
 ### Loops
-Reference: `loops.py`
+Reference: [`loops.py`](https://github.com/ndomah/1.-The-Basics/blob/main/2.%20Introduction%20to%20Python/files/loops.py)
 
 ```python
 for x in 'python':
@@ -169,7 +169,7 @@ n
 ```
 
 ### Functions
-Reference: `functions.py`
+Reference: [`functions.py`](https://github.com/ndomah/1.-The-Basics/blob/main/2.%20Introduction%20to%20Python/files/functions.py)
 
 ```python
 def sum_two(a, b=0):
@@ -188,7 +188,7 @@ print(sum_three(1, 2, 3))
 ```
 
 ### Reading/Writing JSON and CSV
-Reference: `reading_json.py` and `csv_read.py`
+Reference: [`reading_json.py`](https://github.com/ndomah/1.-The-Basics/blob/main/2.%20Introduction%20to%20Python/files/reading_json.py) and [`csv_read.py`](https://github.com/ndomah/1.-The-Basics/blob/main/2.%20Introduction%20to%20Python/files/csv_read.py)
 
 ```python
 import json
