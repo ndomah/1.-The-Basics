@@ -1,0 +1,14 @@
+FROM python:3.9
+
+# Copy the requirements file to the container
+COPY requirements.txt /tmp/
+
+# Install dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --requirement /tmp/requirements.txt
+
+# Correct the case of COPY command and update the path
+COPY hello-faked-person.py /hello-faked-person.py
+
+# Set the correct entrypoint path
+ENTRYPOINT ["python", "/hello-faked-person.py"]
